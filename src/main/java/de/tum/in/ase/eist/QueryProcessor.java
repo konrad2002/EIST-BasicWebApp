@@ -22,15 +22,28 @@ public class QueryProcessor {
                 int o3 = i1 + i2;
                 return String.valueOf(o3);
         } else if (query.contains("largest")) {
-                String s2 = query.substring(query.indexOf("what is "), query.indexOf("plus"));
-                String s3 = query.substring(query.indexOf("plus"));
-                int i1 = Integer.parseInt(s2);
-                int i2 = Integer.parseInt(s3);
-                int o3 = i1 + i2;
-                return String.valueOf(o3);
-            }
+                int n1 = findFirstDigit(query);
+                int n2 = findFirstDigit(query.replaceFirst(String.valueOf(n1), ""));
+                if (n1 > n2) {
+                    return String.valueOf(n1);
+                } else return String.valueOf(n2);
+        }
         else { // TODO extend the programm here
             return "";
         }
+    }
+
+    public int findFirstDigit(String s) {
+        boolean is = false;
+        StringBuilder in = new StringBuilder();
+        for (char c: s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                in.append(c);
+                is = true;
+            } else {
+                if (is) break;
+            }
+        }
+        return Integer.parseInt(in.toString());
     }
 }
