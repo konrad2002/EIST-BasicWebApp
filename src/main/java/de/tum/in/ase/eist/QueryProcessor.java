@@ -21,9 +21,10 @@ public class QueryProcessor {
                 int i1 = findFirstDigit(query);
                 int i2 = findFirstDigit(query.substring(query.indexOf("plus")));
                 int o3 = i1 + i2;
-                System.out.println(o3);
+            System.err.println(o3);
                 return String.valueOf(o3);
-        } else  { // TODO extend the programm here
+        }
+        else { // TODO extend the programm here
             return "";
         }
     }
