@@ -24,19 +24,19 @@ public class QueryProcessor {
                 System.out.println(o3);
                 return String.valueOf(o3);
         } else if (query.contains("largest")) {
-                List<Integer> list = new ArrayList<>();
-                int c = 0;
-                int last = 0;
-                while (c < 4) {
-                    last = findFirstDigit(query.replaceFirst(String.valueOf(last), ""));
-                    if (last == 0) c++;
-                    else {
-                        c = 0;
-                        list.add(last);
-                    }
+            List<Integer> list = new ArrayList<>();
+            int c = 0;
+            int last = 0;
+            while (c < 4) {
+                last = findFirstDigit(query.replaceFirst(String.valueOf(last), ""));
+                if (last == 0) c++;
+                else {
+                    c = 0;
+                    list.add(last);
                 }
+            }
 
-                int largest = 0;
+            int largest = 0;
             for (Integer i : list) {
                 if (largest < i) largest = i;
             }
