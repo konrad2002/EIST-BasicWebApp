@@ -29,5 +29,15 @@ class QueryProcessorTest {
 			fail("Your QueryProcessor should not be case sensitive.");
 		}
 	}
+	@Test
+	void test2() {
+		String actual = queryProcessor.process("what is 14 plus 11");
+		System.out.println(actual);
+	}
+	@Test
+	void test3() {
+		String actual = queryProcessor.process("largest fenwfioehw 5, 82,654");
+		System.out.println(actual);
+	}
 
 }

@@ -2,6 +2,9 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class QueryProcessor {
 
@@ -18,13 +21,28 @@ public class QueryProcessor {
                 int i1 = findFirstDigit(query);
                 int i2 = findFirstDigit(query.substring(query.indexOf("plus")));
                 int o3 = i1 + i2;
+                System.out.println(o3);
                 return String.valueOf(o3);
         } else if (query.contains("largest")) {
-                int n1 = findFirstDigit(query);
-                int n2 = findFirstDigit(query.replaceFirst(String.valueOf(n1), ""));
-                if (n1 > n2) {
-                    return String.valueOf(n1);
-                } else return String.valueOf(n2);
+                List<Integer> list = new ArrayList<>();
+                int c = 0;
+                int last = 0;
+                while (c < 4) {
+                    last = findFirstDigit(query.replaceFirst(String.valueOf(last), ""));
+                    if (last == 0) c++;
+                    else {
+                        c = 0;
+                        list.add(last);
+                    }
+                }
+
+                int largest = 0;
+            for (Integer i : list) {
+                if (largest < i) largest = i;
+            }
+            System.out.println("largest");
+            System.out.println(largest);
+            return String.valueOf(largest);
         }
         else { // TODO extend the programm here
             return "";
@@ -41,6 +59,9 @@ public class QueryProcessor {
             } else {
                 if (is) break;
             }
+        }
+        if (in.toString().equals("")) {
+            return 0;
         }
         return Integer.parseInt(in.toString());
     }
