@@ -15,10 +15,8 @@ public class QueryProcessor {
             return "MyTeam";
         } else if (query.contains("plus")) {
                 query = query.replaceFirst("what is ", "");
-                String s2 = query.substring(0, query.indexOf("plus"));
-                String s3 = query.substring(query.indexOf("plus"));
-                int i1 = Integer.parseInt(s2);
-                int i2 = Integer.parseInt(s3);
+                int i1 = findFirstDigit(query);
+                int i2 = findFirstDigit(query.substring(query.indexOf("plus")));
                 int o3 = i1 + i2;
                 return String.valueOf(o3);
         } else if (query.contains("largest")) {
